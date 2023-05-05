@@ -5,7 +5,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NotFoundException;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -46,8 +45,6 @@ public class ShopStepDefinitions {
         $(addToCart).scrollIntoView(false).shouldBe(interactable).click();
         $(productAddedPopup).shouldBe(visible).shouldHave(text("Product successfully added to your shopping cart"));
         $(continueShoppingBtn).scrollIntoView(false).shouldBe(interactable).click();
-        // todo click continueshopping button -> navigate thr menu -> add random item -> checkout
-        // а лучше просто нажать home после continue и выбрать еще что-то и дальше как обычно
     }
 
     @And("^product is checked out from the cart$")
@@ -74,7 +71,7 @@ public class ShopStepDefinitions {
     public void fillInAddress(String addressOne, String city, String postCode) {
         $(addressField).shouldBe(enabled).sendKeys(addressOne);
         $(cityField).shouldBe(enabled).sendKeys(city);
-        $(postcodeField).shouldBe(enabled).sendKeys(postCode); // написать констрейнт, 5 цифр
+        $(postcodeField).shouldBe(enabled).sendKeys(postCode); // todo написать констрейнт, 5 цифр
         $(continueConfirmAddress).shouldBe(enabled).click();
     }
 
